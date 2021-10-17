@@ -15,14 +15,16 @@ public class MultipleFunction {
     static Scanner scan = new Scanner(System.in);
     static MultipleFunction obj = new MultipleFunction();
 
+    // Taking input according to the problem statement
     public int[] inputFunction(int num_of_inputs) {
         int[] inputArray = new int[num_of_inputs];
         for(int i=0; i<num_of_inputs; i++) {
-            inputArray[i] = scan.nextInt();;
+            inputArray[i] = scan.nextInt();                 // Store input in the array
         }
         return inputArray;
     }
 
+    // Method for adding numbers in array
     public void addition(int[] array) {
         int result = 0;
         for (int i : array) {
@@ -31,6 +33,7 @@ public class MultipleFunction {
         System.out.println("Sum of numbers: "+result);
     }
 
+    // Method for multiplying numbers in array
     public void multiplication(int[] array) {
         int result = 1;
         for (int i : array) {

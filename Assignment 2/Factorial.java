@@ -12,6 +12,7 @@ public class Factorial {
     static Scanner scan = new Scanner(System.in);
     static Factorial obj = new Factorial();
 
+    // Factorial using loop
     public int usingLoop(int num) {
         int fact=1;
         for(int i=num; i>=1; i--) {
@@ -20,6 +21,7 @@ public class Factorial {
         return fact;
     }
 
+    // Factorial using recursion
     public int usingRecursion(int num) {
         if(num>=1)
             return num*usingRecursion(num-1);

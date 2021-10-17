@@ -11,6 +11,7 @@ public class Palindrome {
     static Scanner scan = new Scanner(System.in);
     static Palindrome obj = new Palindrome();
 
+    // Method to get the number of digit in number
     public int countDigit(int num) {
         int count = 0;
         while(num>0) {
@@ -20,6 +21,7 @@ public class Palindrome {
         return count;
     }
 
+    // Method to reverse the number
     public int reverseNumber(int num) {
         int result = 0;
         while(num>0) {
