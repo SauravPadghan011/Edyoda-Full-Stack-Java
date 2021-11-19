@@ -1,94 +1,98 @@
+/*
+* Program to convert integer number into the word format
+* */
+
 package edyoda.Assignment3;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NumberToWord {
     static Scanner scan = new Scanner(System.in);
-    private static final ArrayList<String> stringList = new ArrayList<>();
-    private static final ArrayList<String> stringTwoDigit = new ArrayList<>();
+    private static final ArrayList<String> numStringList = new ArrayList<>();
+    private static final ArrayList<String> twoNumStringList = new ArrayList<>();
 
-    private void addElement() {
-        stringList.add("One");
-        stringList.add("Two");
-        stringList.add("Three");
-        stringList.add("Four");
-        stringList.add("Five");
-        stringList.add("Six");
-        stringList.add("Seven");
-        stringList.add("Eight");
-        stringList.add("Nine");
-        stringList.add("Ten");
-        stringList.add("Eleven");
-        stringList.add("Twelve");
-        stringList.add("Thirteen");
-        stringList.add("Fourteen");
-        stringList.add("Fifteen");
-        stringList.add("Sixteen");
-        stringList.add("Seventeen");
-        stringList.add("Eighteen");
-        stringList.add("Nineteen");
-        stringList.add("Twenty");
+    // Constructor which adding all the words into the list
+    NumberToWord() {
+        numStringList.add("One");
+        numStringList.add("Two");
+        numStringList.add("Three");
+        numStringList.add("Four");
+        numStringList.add("Five");
+        numStringList.add("Six");
+        numStringList.add("Seven");
+        numStringList.add("Eight");
+        numStringList.add("Nine");
+        numStringList.add("Ten");
+        numStringList.add("Eleven");
+        numStringList.add("Twelve");
+        numStringList.add("Thirteen");
+        numStringList.add("Fourteen");
+        numStringList.add("Fifteen");
+        numStringList.add("Sixteen");
+        numStringList.add("Seventeen");
+        numStringList.add("Eighteen");
+        numStringList.add("Nineteen");
+        numStringList.add("Twenty");
+
+        twoNumStringList.add("Ten");
+        twoNumStringList.add("Twenty");
+        twoNumStringList.add("Thirty");
+        twoNumStringList.add("Forty");
+        twoNumStringList.add("Fifty");
+        twoNumStringList.add("Sixty");
+        twoNumStringList.add("Seventy");
+        twoNumStringList.add("Eighty");
+        twoNumStringList.add("Ninety");
     }
 
-    private void addTwoDigit() {
-        stringTwoDigit.add("Ten");
-        stringTwoDigit.add("Twenty");
-        stringTwoDigit.add("Thirty");
-        stringTwoDigit.add("Forty");
-        stringTwoDigit.add("Fifty");
-        stringTwoDigit.add("Sixty");
-        stringTwoDigit.add("Seventy");
-        stringTwoDigit.add("Eighty");
-        stringTwoDigit.add("Ninety");
-    }
-
+    // Returns all the two-digit number into the string
     private static String toTwoDigitMethod(int num) {
-        if(num == 10) return stringList.get(num-1);
+        if(num == 10) return numStringList.get(num-1);
+        if(num == 0) return "";
         int lastDigit = num%10;
         int firstDigit = num/10;
         try{
-            if (num == 10) System.out.println(stringList.get(num - 1));
-            else if (num >= 11 && num <= 20) {
-                return stringList.get(num - 1);
+            if (num >= 11 && num <= 20) {
+                return numStringList.get(num - 1);
             } else if (lastDigit == 0) {
-                return stringTwoDigit.get(firstDigit - 1);
+                return twoNumStringList.get(firstDigit - 1);
             } else {
-                return stringTwoDigit.get(firstDigit - 1) + " " + stringList.get(lastDigit - 1).toLowerCase();
+                return twoNumStringList.get(firstDigit - 1) + " " + numStringList.get(lastDigit - 1).toLowerCase();
             }
         } catch(IndexOutOfBoundsException e) {
-            return stringList.get(lastDigit-1);
+            return numStringList.get(lastDigit-1);
         }
-        return null;
+
     }
 
+    // Returns all the three-digit number into the string
     private static String toTreeDigitMethod(int num) {
         int lastTwoDigit = num % 100;
         int firstDigit = num / 100;
         try {
-            return stringList.get(firstDigit - 1) + " hundred " + toTwoDigitMethod(lastTwoDigit).toLowerCase();
+            return numStringList.get(firstDigit - 1) + " hundred " + toTwoDigitMethod(lastTwoDigit).toLowerCase();
         } catch (IndexOutOfBoundsException e) {
-            return stringList.get(firstDigit - 1) + " hundred " + stringList.get(num-firstDigit*100-1);
+            return numStringList.get(firstDigit - 1) + " hundred " + numStringList.get(num-firstDigit*100-1);
         }
     }
 
+    // Returns all the three-digit number into the string
     private static String toFourDigitMethod(int num) {
         int lastTreeDigit = num%1000;
         int lastTwoDigit = num%100;
         int firstDigit = num/1000;
         try {
-            return stringList.get(firstDigit-1) + " thousand " + toTreeDigitMethod(lastTreeDigit).toLowerCase();
+            return numStringList.get(firstDigit-1) + " thousand " + toTreeDigitMethod(lastTreeDigit).toLowerCase();
         } catch (IndexOutOfBoundsException e) {
-            return stringList.get(firstDigit-1) + " thousand " + toTwoDigitMethod(lastTwoDigit).toLowerCase();
+            return numStringList.get(firstDigit-1) + " thousand " + toTwoDigitMethod(lastTwoDigit).toLowerCase();
         }
     }
 
     public static void main(String[] args) {
         NumberToWord obj = new NumberToWord();
-        System.out.print("Enter Number: ");
+        System.out.print("Enter Number: ");     // Taking input from user
         int num = scan.nextInt();
 
-        obj.addElement();
-        obj.addTwoDigit();
 
         // Find number of element in number
         int totalElement = 0;
@@ -100,7 +104,7 @@ public class NumberToWord {
 
         switch(totalElement) {
             case 1 -> {
-                System.out.println(stringList.get(num-1));
+                System.out.println(numStringList.get(num-1));
             }
 
             case 2 -> {
@@ -110,7 +114,7 @@ public class NumberToWord {
             case 3 -> {
                 int lastDigit = num%10;
                 int firstDigit = num/100;
-                if(lastDigit == 0) System.out.println(stringList.get(firstDigit-1)
+                if(lastDigit == 0) System.out.println(numStringList.get(firstDigit-1)
                         + " hundred " + toTwoDigitMethod(num%100).toLowerCase());
                 else System.out.println(toTreeDigitMethod(num));
             }
@@ -119,7 +123,8 @@ public class NumberToWord {
                 int lastDigit = num%10;
                 int firstDigit = num/1000;
                 int secondDigit = (num%1000)/100;
-                if(lastDigit == 0) System.out.println(stringList.get(firstDigit-1) + " thousand " + stringList.get(secondDigit-1).toLowerCase()
+                if(num%1000 == 0) System.out.println(numStringList.get(firstDigit-1) + " thousand ");
+                else if(lastDigit == 0) System.out.println(numStringList.get(firstDigit-1) + " thousand " + numStringList.get(secondDigit-1).toLowerCase()
                         + " hundred " + toTwoDigitMethod(num%100).toLowerCase());
                 else System.out.println(toFourDigitMethod(num));
             }

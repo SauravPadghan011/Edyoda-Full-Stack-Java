@@ -1,3 +1,7 @@
+/*
+* Write a Java program to check whether two strings entered by user are anagram or not?
+ * */
+
 package edyoda.Assignment3;
 import java.util.*;
 
@@ -18,6 +22,6 @@ public class Anagram {
         if(result)
             System.out.println(str1 + " " + str2 + " are anagram");
         else
-            System.out.println(str1 + " " + str2 + " are anagram");
+            System.out.println(str1 + " " + str2 + " are not anagram");
     }
 }

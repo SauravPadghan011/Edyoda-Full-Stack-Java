@@ -1,3 +1,8 @@
+/*
+* Program to implement cloneable interface
+* */
+
+
 package edyoda.Assignment3;
 import java.util.Scanner;
 
@@ -32,8 +37,8 @@ public class CloneableInterface implements Cloneable{
         System.out.print("Enter Age: ");
         int age = scan.nextInt();
 
-        CloneableInterface obj1 = new CloneableInterface(firstName, lastName, age);
-        CloneableInterface obj2 = (CloneableInterface) obj1.clone();
+        CloneableInterface obj1 = new CloneableInterface(firstName, lastName, age);     // Original class object
+        CloneableInterface obj2 = (CloneableInterface) obj1.clone();                    // cloning object 1
 
         obj1.print();
         obj2.print();
