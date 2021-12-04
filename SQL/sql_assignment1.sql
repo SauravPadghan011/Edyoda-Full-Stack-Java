@@ -9,7 +9,6 @@ Snum Sname City Comm
 1004 Motika London .11
 1007 Rifkin Barcelona .15
 1003 Axelrod Newyork .10
-
 */
 
 CREATE TABLE SalesPeople(
@@ -41,8 +40,8 @@ Cnum Cname City Snum
 2006 Clemens London 1001
 2008 Cisneros Sanjose 1007
 2007 Pereira Rome 1004
-
 */
+
 CREATE TABLE Customers(
 Cnum INT PRIMARY KEY,
 Cname VARCHAR(20),
@@ -75,7 +74,6 @@ Onum Amt Odate Cnum Snum
 3008  4273.00 5-10-1990 2006 1001
 3010  1309.95 6-10-1990 2004 1002
 3011  9891.88 6-10-1990 2006 1001
-
 */
 CREATE TABLE Orders(
 Onum INT PRIMARY KEY,
@@ -153,7 +151,6 @@ Ans: SELECT Odate,Snum,COUNT(*) FROM orders GROUP BY Odate,Snum;
 | 1990-10-06 | 1001 |        1 |
 +------------+------+----------+
 9 rows in set (0.00 sec)
-
 */
 
 
